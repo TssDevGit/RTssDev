@@ -1,14 +1,12 @@
-
-
 {
   "auth": {
       "identityProviders": {
           "customOpenIdConnectProviders": {
               "b2c": {
                   "registration": {
-                      "clientIdSettingName": "0ed11ab2-fb0b-4658-8fbd-ad84efc1076c",
+                      "clientIdSettingName": "B2C_CLIENT_ID",
                       "clientCredential": {
-                          "clientSecretSettingName": "ff868ba3-669d-4c3d-8e9c-ab3da0b47792"
+                          "clientSecretSettingName": "B2C_SECRET"
                       },
                       "openIdConnectConfiguration": {
                           "wellKnownOpenIdConfiguration": "https://TSSTENENT.b2clogin.com/TSSTENENT.onmicrosoft.com"
@@ -20,40 +18,6 @@
                   }
               }
           }
-      }
-  }
-}
-
-{
-  "auth": {
-      "identityProviders": {
-          "azureActiveDirectory": {
-              "registration": {
-                  "openIdIssuer": "https://login.microsoftonline.com/TSSTENENT/v2.0",
-                  "clientIdSettingName": "5f211da3-59c7-408b-b57f-f82bc14d52f6",
-                  "clientSecretSettingName": "ff868ba3-669d-4c3d-8e9c-ab3da0b47792"
-              }
-          }
-      }
-  },
-  "routes": [
-      {
-          "route": "/",
-          "allowedRoles": [
-              "anonymous"
-          ]
-      },
-      {
-          "route": "/*",
-          "allowedRoles": [
-              "authenticated"
-          ]
-      }
-  ],
-  "responseOverrides": {
-      "401": {
-          "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer",
-          "statusCode": 302
       }
   }
 }

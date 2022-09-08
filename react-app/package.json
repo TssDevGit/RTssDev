@@ -48,6 +48,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/eslint-parser": "^7.18.9",
+    "eslint": "^8.23.0",
     "sass-loader": "^7.3.1"
   }
 }

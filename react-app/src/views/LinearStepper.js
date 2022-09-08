@@ -92,7 +92,7 @@ function getStepContent(step, setOpenPopup) {
                     <Input
                       id="nm1"
                       name="name"
-                      placeholder="with a placeholder"
+                      placeholder="入力してください"
                       type="text"
                     />
                   </FormGroup>
@@ -152,23 +152,26 @@ function getStepContent(step, setOpenPopup) {
             {/* Card-1*/}
             {/* --------------------------------------------------------------------------------*/}
             <Card>
-
               <CardBody>
                 <Form>
+                {/* border-bottom p-3 mb-0 */}
                   <CardTitle tag="h6" className="border-bottom p-3 mb-0">
                     ビジネスドライバー
                     <Button className="btn-1" color="primary" onClick={() => { setOpenPopup(true); }}>クリック</Button>
                   </CardTitle>
                 </Form>
+                  <div id="test"></div>                      
+                  </CardBody>
+              <CardBody>
                 <Form>
                   <CardTitle tag="h6" className="border-bottom p-3 mb-0">
                     Fit
                     <Button className="btn-1" color="primary" onClick={() => { setOpenPopup(true); }}>クリック</Button>
                   </CardTitle>
                 </Form>
-                <div id="test"></div>
+                  <div id="test2"></div>
               </CardBody>
-            </Card>
+            </Card>     
           </Col>
         </Row>
       );
@@ -280,9 +283,102 @@ function getStepContent(step, setOpenPopup) {
                     </tr>                      
                   </tbody>
                 </Table>
+                <List className="LinearliBD">
+                      <li className="BDTitle">選択済ビジネスドライバー（Fit）</li>
+                      <li>BD1：</li>
+                      <li>BD2：</li>
+                      <li>BD3：</li>
+                      <li>BD4：</li>
+                      <li>BD5：</li>
+                      <li>BD6：</li>
+                </List>  
+                <Table bordered striped className="tb-center">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>順位</th>
+                      <th>コンピテンシー名</th>
+                      <th>BD1</th>
+                      <th>BD2</th>
+                      <th>BD3</th>
+                      <th >BD4</th>
+                      <th>BD5</th>
+                      <th>BD6</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
+                      <td>1</td>
+                      <td>パートナーシップ形成</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
+                      <td>2</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
+                      <td>3</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
+                      <td>4</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>   
+                    <tr>
+                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
+                      <td>5</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>     
+                    <tr>
+                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
+                      <td>6</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>                      
+                  </tbody>
+                </Table>
               </CardBody>
             </Card>
           </Col>
+          
         </div>
       );
     case 3:
@@ -387,6 +483,7 @@ function getStepContent(step, setOpenPopup) {
           </Col>
         </Row>
       );
+      //fit コンピテンシー選択 page 
     case 4:
       return(
         <Row>
@@ -399,7 +496,7 @@ function getStepContent(step, setOpenPopup) {
                 <i className="bi bi-bell me-2"> </i>
                 Fit
               </CardTitle>
-              <CardBody className="">              
+              <CardBody className="LinearP4">              
                   <List className="Linearlihtml">
                     <li>(説明と指示文：未作成)</li>
                     <li>コンピテンシーを選択してください。選択されたビジネスドライバーに関連性が高いものから順に表示しています。</li>
@@ -512,13 +609,13 @@ const info = (selectedUs, selectedCategories, selectedJapan, selectedKorea) => {
 
   return (
     <div>
-      <div className="card">
-
-        <h5 className="_h5 h5-1">未来を描く</h5>
+      {/* <div className="card"> */}
+      <div className="">
+        <h5 className="_h5 h5-1 jw">未来を描く</h5>
         {
           selectedUs.map((category) => {
               return (
-                  <div key={category.key} className="field-checkbox field-checkbox-1">
+                  <div key={category.key} className="field-checkbox field-checkbox-1 jwsita">
                       <label htmlFor={category.key}>{category.name}</label>
                   </div>
               )
@@ -720,7 +817,7 @@ const CheckboxDemoFit = (props) => {
   const showInfoFit = (e) => {
     ReactDOM.render(
       infoFit(selectedBlue, selectedOrange, selectedGreen),   
-      document.getElementById("test")
+      document.getElementById("test2")
     );
     setOpenPopup(false);
   }
@@ -793,9 +890,9 @@ const CheckboxDemo = (props) => {
   const { setOpenPopup } = props;
   const us = [{name: '新組職の総合', key: 'C'}, {name: '新組戦略の立案', key: 'H'}, {name: '組織の抜本的な変革(パラダイムシフト)', key: 'D'}, {name: '運営コストの管理と削減', key: 'S'},
   {name: 'アライメント(整合性)とアカウンタビリティの作成', key: 'A'}];
-  const categories = [{name: '', key: 'A'}, {name: '', key: 'M'}, {name: '', key: 'P'}, {name: '', key: 'R'}];
-  const japan = [{name: '', key: 'T'}, {name: '', key: 'O'}, {name: '', key: 'K'}, {name: '', key: 'S'}];
-  const korea = [{name: '', key: 'S'}, {name: '', key: 'B'}, {name: '', key: 'D'}, {name: '', key: 'I'}];
+  const categories = [{name: 'Test1', key: 'A'}, {name: 'Test2', key: 'M'}, {name: '', key: 'P'}, {name: '', key: 'R'}];
+  const japan = [{name: 'Test1', key: 'T'}, {name: 'Test2', key: 'O'}, {name: '', key: 'K'}, {name: '', key: 'S'}];
+  const korea = [{name: 'Test1', key: 'S'}, {name: 'Test2', key: 'B'}, {name: '', key: 'D'}, {name: '', key: 'I'}];
   const [selectedUs, setSelectedUs] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedJapan, setSelectedJapan] = useState([]);
@@ -895,7 +992,7 @@ const CheckboxDemo = (props) => {
     );
     setOpenPopup(false);
   }
-
+ 
   return (
     <div>
         <Form>
@@ -1053,11 +1150,12 @@ const LinaerStepper = () => {
           </Button>
         </>
       )}
-      <Popup title="ビジネスドライバー" openPopup={openPopup} setOpenPopup={setOpenPopup}>
-      <CheckboxDemo setOpenPopup={setOpenPopup} />
-      </Popup>
+     
       <Popup title="組織適合Fit" openPopup={openPopup} setOpenPopup={setOpenPopup}>
       <CheckboxDemoFit setOpenPopup={setOpenPopup} />
+      </Popup>
+      <Popup title="ビジネスドライバー" openPopup={openPopup} setOpenPopup={setOpenPopup}>
+      <CheckboxDemo setOpenPopup={setOpenPopup} />
       </Popup>
     </div>
   );

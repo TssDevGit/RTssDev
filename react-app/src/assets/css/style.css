@@ -61,6 +61,7 @@
 }
 .tb-center {
     text-align: center;
+    /* table-layout: fixed; */
 }
 .Linearli {
     list-style:none;
@@ -102,4 +103,18 @@
 }
 .tb-center .BDketka3{
     background-color: #f3d7ac;
+}
+.homeichiran .anken{
+    width: 25%;
+    word-break: break-all;
+}
+.homeichiran .chline{
+    width: 10%;
+    word-break: break-all;
+}
+.homeichiran .chk{
+    width: 5%;
+}
+.homeichiran .default{
+    width: 5%;
 }
