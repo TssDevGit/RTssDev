@@ -1,0 +1,26 @@
+{
+    "home":{
+        "create":"Create",
+        "copy":"Copy",
+        "delete":"Delete"
+    },
+    "back":"Back",
+    "next":"Next",
+    "preservation":"Preservation",
+    "signin": "Signin",
+    "definition":"Definition",
+    "keyAction" :"KeyAction",
+    "example" : "Example",
+    "question":"Question",
+    "bars":"BARS",
+    "nameC0001" :"ACCOUNT PLANNING",
+    "definitionC0001":"Establishing a plan to achieve the sales objectives of an account, taking into consideration overall opportunities, customer business priorities and anticipated business changes, regional issues, past sales results, and available resources; taking action specified in the account plan, reviewing progress, and adjusting the plan as needed.",
+    "keyActionC0001":"Systematically evaluates sales opportunities within the account and targets those with the greatest potential for producing positive results; prioritizes sales opportunities based on a firm understanding of the customer’s business priorities and anticipated business changes, decision-making processes, and buying history.",
+    "test" :"lang test!!!!!!!!!!!!!!!!!!!!!!!"
+    
+  
+  
+  
+  
+  
+    }

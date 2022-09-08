@@ -1,8 +1,9 @@
 import { Row, Col, Button, Form, Table, Card, CardTitle, CardBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
-
-
+import Tsearch from "../components/dashboard/Search";
+import { useTranslation } from 'react-i18next';
+import i18n from "i18next";
 
 const Home = () => {
   let navigate = useNavigate(); 
@@ -10,21 +11,52 @@ const Home = () => {
     let path = `/register`; 
     navigate(path);
   }
+  const { t }  = useTranslation(['page'])
+  
+  const onChangeLangen = () => {
+    i18n.changeLanguage('en')
+}
+  const onChangeLangja= () => {
+  i18n.changeLanguage('ja')
+}
   return (
     <div>
-      <Form>
-        <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-          <Button className="btn-1" color="primary" onClick={routeChange}>　作　成　</Button>
-          <Button className="btn-1" color="secondary" onClick={() => {  }}>　コピー　</Button>
-          <Button className="btn-1" color="danger" onClick={() => {  }}>　削　除　</Button>
+      <Form>        
+          <Tsearch/>
+          <CardTitle tag="h6" className="border-bottom p-3 mb-0">
+          {/* <div class="mt-3 row">
+        <div class="col">
+          <div class="bg-light p-2 border"><Tsearch/> </div></div>
+          <div class="col">
+            <div class="bg-light p-2 border">
+            <Button className="btn-1" color="primary" onClick={routeChange}>{t(`page:home.create`)}</Button>
+            </div>
+          </div>
+          <div class="col">
+            <div class="bg-light p-2 border">
+            <Button className="btn-1" color="secondary" onClick={() => {  }}>{t(`page:home.copy`)}</Button>
+            </div>
+          </div>
+          <div class="col">
+            <div class="bg-light p-2 border">
+            <Button className="btn-1" color="danger" onClick={() => {  }}>{t(`page:home.delete`)}</Button>
+            </div>
+          </div>
+        </div> */}
+         <Button className="btn-1" color="primary" onClick={routeChange}>{t(`page:home.create`)}</Button>
+          <Button className="btn-1" color="secondary" onClick={() => {  }}>{t(`page:home.copy`)}</Button>
+          <Button className="btn-1" color="danger" onClick={() => {  }}>{t(`page:home.delete`)}</Button>
+          <Button className="btn-1" color="primary" onClick={onChangeLangen}>eng</Button>
+          <Button className="btn-1" color="primary" onClick={onChangeLangja}>ja</Button>          
         </CardTitle>
       </Form>
+
       {/***Table ***/}
       <Col lg="12">
         <Card>
           <CardTitle tag="h6" className="border-bottom p-3 mb-0">
             <i className="bi bi-card-text me-2"> </i>
-            案件一覧
+            案件一覧{t(`page:test`)}
           </CardTitle>
           <CardBody className="">
             <Table bordered striped className="tb-center">

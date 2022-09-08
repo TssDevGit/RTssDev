@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
 import Loader from "./layouts/loader/Loader";
+import "./i18n"; //i18
+
 
 ReactDOM.render(
   <Suspense fallback={<Loader />}>

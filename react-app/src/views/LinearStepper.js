@@ -43,6 +43,7 @@ import 'primeflex/primeflex.css';
 import { Checkbox } from 'primereact/checkbox';
 
 import Popup from "../components/dashboard/Popup";
+import PopupFit from "../components/dashboard/PopupFit";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -59,7 +60,7 @@ function getSteps() {
   ];
 }
 
-function getStepContent(step, setOpenPopup) {
+function getStepContent(step, setOpenPopup,setOpenPopupFit) {
   
   const  options  = [
     { label:  'Option 1', value:  'option_1'  },
@@ -166,7 +167,7 @@ function getStepContent(step, setOpenPopup) {
                 <Form>
                   <CardTitle tag="h6" className="border-bottom p-3 mb-0">
                     Fit
-                    <Button className="btn-1" color="primary" onClick={() => { setOpenPopup(true); }}>クリック</Button>
+                    <Button className="btn-1" color="primary" onClick={() => { setOpenPopupFit(true); }}>クリック</Button>
                   </CardTitle>
                 </Form>
                   <div id="test2"></div>
@@ -294,21 +295,19 @@ function getStepContent(step, setOpenPopup) {
                 </List>  
                 <Table bordered striped className="tb-center">
                   <thead>
-                    <tr>
-                      <th></th>
+                    <tr>                     
                       <th>順位</th>
                       <th>コンピテンシー名</th>
                       <th>BD1</th>
                       <th>BD2</th>
                       <th>BD3</th>
-                      <th >BD4</th>
+                      <th>BD4</th>
                       <th>BD5</th>
                       <th>BD6</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
                       <td>1</td>
                       <td>パートナーシップ形成</td>
                       <td></td>
@@ -319,7 +318,6 @@ function getStepContent(step, setOpenPopup) {
                       <td></td>
                     </tr>
                     <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
                       <td>2</td>
                       <td></td>
                       <td></td>
@@ -330,7 +328,6 @@ function getStepContent(step, setOpenPopup) {
                       <td></td>
                     </tr>
                     <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
                       <td>3</td>
                       <td></td>
                       <td></td>
@@ -339,40 +336,7 @@ function getStepContent(step, setOpenPopup) {
                       <td></td>
                       <td></td>
                       <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>4</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>   
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>5</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>     
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>6</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>                      
+                    </tr>               
                   </tbody>
                 </Table>
               </CardBody>
@@ -660,7 +624,7 @@ const info = (selectedUs, selectedCategories, selectedJapan, selectedKorea) => {
 }
 
 //Fit
-const infoFit = (selectedBlue, selectedOrange, selectedGreen, selectedBlack) => {
+const infoFit = (selectedBlue, selectedOrange, selectedGreen) => {
 
   return (
     <div>
@@ -699,7 +663,7 @@ const infoFit = (selectedBlue, selectedOrange, selectedGreen, selectedBlack) => 
           })
         }
          
-        <h5 className="_h5 h5-4">ビジネスの成長</h5>
+        {/* <h5 className="_h5 h5-4">ビジネスの成長</h5>
         {
           selectedBlack.map((category) => {
             return (
@@ -708,7 +672,7 @@ const infoFit = (selectedBlue, selectedOrange, selectedGreen, selectedBlack) => 
                 </div>
             )
           })
-        }
+        } */}
       </div>
     </div>
   )
@@ -716,7 +680,7 @@ const infoFit = (selectedBlue, selectedOrange, selectedGreen, selectedBlack) => 
 
 //Fit
 const CheckboxDemoFit = (props) => {
-  const { setOpenPopup } = props;
+  const { setOpenPopupFit } = props;
   const blue = [{name: '行動志向', key: 'C'}, {name:'問題提起の奨励', key: 'H'}, {name: '方針・手続きの証明化', key: 'D'}, {name: '継続的な改善', key: 'S'},
   {name: '部門間協力', key: 'A'},{name: '少数精鋭', key: 'J'},{name:'主体的参画の奨励', key: 'U'}];
   const orange = [{name: '', key: 'A'}, {name: '', key: 'M'}, {name: '', key: 'P'}, {name: '', key: 'R'}];
@@ -819,7 +783,7 @@ const CheckboxDemoFit = (props) => {
       infoFit(selectedBlue, selectedOrange, selectedGreen),   
       document.getElementById("test2")
     );
-    setOpenPopup(false);
+    setOpenPopupFit(false);
   }
 
   return (
@@ -837,7 +801,7 @@ const CheckboxDemoFit = (props) => {
             blue.map((blueItem) => {
               return (
                 <div key={blueItem.key} className="field-checkbox field-checkbox-1">
-                    <Checkbox inputId={blueItem.key} name="blueItem" value={blueItem} onChange={onBlueChange} checked={selectedBlue.some((item) => item.key === BlueItem.key)} />
+                    <Checkbox inputId={blueItem.key} name="blueItem" value={blueItem} onChange={onBlueChange} checked={selectedBlue.some((item) => item.key === blueItem.key)} />
                     <label htmlFor={blueItem.key}>{blueItem.name}</label>
                 </div>
               )
@@ -1062,6 +1026,7 @@ const LinaerStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [skippedSteps, setSkippedSteps] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
+  const [openPopupFit, setOpenPopupFit] = useState(false);
   const steps = getSteps();
 
   const isStepOptional = (step) => {
@@ -1116,7 +1081,7 @@ const LinaerStepper = () => {
         </Typography>
       ) : (
         <>
-          {getStepContent(activeStep, setOpenPopup)}
+          {getStepContent(activeStep, setOpenPopup,setOpenPopupFit)}
           <Button
             className={classes.button}
             disabled={activeStep === 0}
@@ -1151,9 +1116,9 @@ const LinaerStepper = () => {
         </>
       )}
      
-      <Popup title="組織適合Fit" openPopup={openPopup} setOpenPopup={setOpenPopup}>
-      <CheckboxDemoFit setOpenPopup={setOpenPopup} />
-      </Popup>
+      <PopupFit title="組織適合Fit" openPopupFit={openPopupFit} setOpenPopupFit={setOpenPopupFit}>
+      <CheckboxDemoFit setOpenPopupFit={setOpenPopupFit} />
+      </PopupFit>
       <Popup title="ビジネスドライバー" openPopup={openPopup} setOpenPopup={setOpenPopup}>
       <CheckboxDemo setOpenPopup={setOpenPopup} />
       </Popup>
