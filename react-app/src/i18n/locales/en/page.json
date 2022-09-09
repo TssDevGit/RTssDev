@@ -2,8 +2,44 @@
     "home":{
         "create":"Create",
         "copy":"Copy",
-        "delete":"Delete"
+        "delete":"Delete",
+        "disable":"Disalbe",
+        "open":"Open",
+        "filter":"Filter",
+        "signout":"Signout",
+        "checkbox":"CheckBox",
+        "subjectname":"SubjectName",
+        "subjectid":"SubjectID",
+        "startdate":"StartDate",
+        "enddate":"EndDate",
+        "siminputStatus":"SiminputStatus",
+        "compselstatus":"CompSelStatus",
+        "prinstatus":"PrintStatus",
+        "csvoutputstatus":"CSVOutputStatus",
+        "enabled":"Enabled",
+        "search":"Search..."
     },
+    "header":{
+        "home":"Home",
+        "info":"Info",
+        "edit":"Edit Profile",
+        "logout":"Logout"
+    },
+    "simul":{
+        "category":"Category",
+        "simulationid":"SimulationID"
+    },
+    "action" :{
+        "back":"Back",
+        "next":"Next",
+        "save":"save",
+        "displayreference":"DisplayReference",
+        "move":"Move",
+        "signout":"Signout"
+    },
+    "businessdriver":"BusinessDriver",
+    "departmebtfit": "DepartmentFit",
+    "search":"Search",
     "back":"Back",
     "next":"Next",
     "preservation":"Preservation",
@@ -16,7 +52,8 @@
     "nameC0001" :"ACCOUNT PLANNING",
     "definitionC0001":"Establishing a plan to achieve the sales objectives of an account, taking into consideration overall opportunities, customer business priorities and anticipated business changes, regional issues, past sales results, and available resources; taking action specified in the account plan, reviewing progress, and adjusting the plan as needed.",
     "keyActionC0001":"Systematically evaluates sales opportunities within the account and targets those with the greatest potential for producing positive results; prioritizes sales opportunities based on a firm understanding of the customer’s business priorities and anticipated business changes, decision-making processes, and buying history.",
-    "test" :"lang test!!!!!!!!!!!!!!!!!!!!!!!"
+    "test" :"lang test!!!!!!!!!!!!!!!!!!!!!!!",
+    "text":"Textplz"
     
   
   

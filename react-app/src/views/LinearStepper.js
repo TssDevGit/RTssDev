@@ -44,6 +44,7 @@ import { Checkbox } from 'primereact/checkbox';
 
 import Popup from "../components/dashboard/Popup";
 import PopupFit from "../components/dashboard/PopupFit";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -61,7 +62,7 @@ function getSteps() {
 }
 
 function getStepContent(step, setOpenPopup,setOpenPopupFit) {
-  
+  const { t }  = useTranslation(['page'])
   const  options  = [
     { label:  'Option 1', value:  'option_1'  },
     { label:  'Option 2', value:  'option_2'  },
@@ -89,16 +90,16 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
               <CardBody>
                 <Form>
                   <FormGroup>
-                    <Label for="exampleEmail">案件ID</Label>
+                    <Label for="exampleEmail">{t("page:home.subjectid")}</Label>
                     <Input
                       id="nm1"
                       name="name"
-                      placeholder="入力してください"
+                      placeholder={t("page:text")}
                       type="text"
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="exampleEmail">案件名</Label>
+                    <Label for="exampleEmail">{t("page:home.subjectname")}</Label>
                     <Input
                       id="nm2"
                       name="name"
@@ -107,7 +108,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="examplePassword">開始日</Label>
+                    <Label for="examplePassword">{t("page:home.startdate")}</Label>
                     <Input
                       id="date1"
                       name="password"
@@ -116,7 +117,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="examplePassword">終了日</Label>
+                    <Label for="examplePassword">{t("page:home.enddate")}</Label>
                     <Input
                       id="date2"
                       name="date2"
@@ -157,7 +158,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                 <Form>
                 {/* border-bottom p-3 mb-0 */}
                   <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-                    ビジネスドライバー
+                  {t("businessdriver")}
                     <Button className="btn-1" color="primary" onClick={() => { setOpenPopup(true); }}>クリック</Button>
                   </CardTitle>
                 </Form>
@@ -297,7 +298,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                   <thead>
                     <tr>                     
                       <th>順位</th>
-                      <th>コンピテンシー名</th>
+                      <th>{t("page:name")}</th>
                       <th>BD1</th>
                       <th>BD2</th>
                       <th>BD3</th>
@@ -372,7 +373,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
 
                   <FormGroup>
                     <div style={{ display: 'block', width: 700, padding: 10}}>
-                      <h4>ビジネスドライバー</h4>
+                      <h4>{t("page:businessdriver")}</h4>
                       <List className="Linearli">
                         <li className="Linearlibi">未来を描く</li>
                           <List>
@@ -430,7 +431,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                               <li className="Linearlikon">すべての新しい戦略が意図したとおりの結果を出すとは限りません。あなたが実行した戦略が目標を達成できなかった時のことについて教えて下さい。
                                 目標を達成できなかった理由はなぜですか？どのような教訓を得られたでしょうか。</li>
                           </List>
-                        <li className="Linearlibi">BARS</li>
+                        <li className="Linearlibi">{t("page:bars")}</li>
                           <List className="Linearli">
                               <li>Lv5</li>
                                 <List className="Linearlikon-l">
@@ -480,7 +481,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                     <tr>
                       <th></th>
                       <th>順位</th>
-                      <th>コンピテンシー名</th>
+                      <th>{t("page:businessdriver")}</th>
                       <th>BD1</th>
                       <th>BD2</th>
                       <th>BD3</th>
@@ -1045,7 +1046,7 @@ const LinaerStepper = () => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
+  
 
   return (
     <div>

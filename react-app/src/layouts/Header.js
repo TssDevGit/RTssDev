@@ -16,6 +16,10 @@ import {
 import Logo from "./Logo";
 import { ReactComponent as LogoWhite } from "../assets/images/logos/img_logo02.svg";
 import user1 from "../assets/images/users/user4.jpg";
+import japanese from"../assets/images/users/japan.png";
+import us from"../assets/images/users/us.png";
+import i18n from "i18next";
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -29,6 +33,14 @@ const Header = () => {
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
+  const onChangeLangen = () => {
+    i18n.changeLanguage('en')
+}
+  const onChangeLangja= () => {
+  i18n.changeLanguage('ja')
+}
+  const {t} = useTranslation([`page`]);
+
   return (
     <Navbar color="white" light expand="md" className="fix-header">
       <div className="d-flex align-items-center">
@@ -65,7 +77,7 @@ const Header = () => {
         <Nav className="me-auto" navbar>
           <NavItem>
             <Link to="/home" className="nav-link">
-              Home
+              {t("page:header.home")}
             </Link>
           </NavItem>
           <NavItem>
@@ -85,6 +97,8 @@ const Header = () => {
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
+        <img src={japanese} alt="profile" className="rounded-circle" width="30" onClick={onChangeLangja} ></img>
+        <img src={us} alt="profile" className="rounded-circle" width="20" onClick={onChangeLangen} ></img>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="transparent">
             <img
@@ -95,13 +109,13 @@ const Header = () => {
             ></img>
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem header>Info</DropdownItem>
+            <DropdownItem header>{t("page:header.info")}</DropdownItem>
             <DropdownItem>My Account</DropdownItem>
-            <DropdownItem>Edit Profile</DropdownItem>
+            <DropdownItem>{t("page:header.edit")}</DropdownItem>
             <DropdownItem divider />
             <DropdownItem>My Balance</DropdownItem>
             <DropdownItem>Inbox</DropdownItem>
-            <DropdownItem>Logout</DropdownItem>
+            <DropdownItem>{t("page:header.logout")}</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </Collapse>

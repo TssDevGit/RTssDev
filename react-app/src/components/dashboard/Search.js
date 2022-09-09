@@ -1,15 +1,18 @@
+import { useTranslation } from 'react-i18next';
+
 export default function SearchComponent() {
+    const { t }  = useTranslation(['page'])
     return (
         <div className="">
             <div className="">
             <select id="exampleSelect" name="select" className="form-select-sm">
-                <option>案件ID</option>
-                <option>案件名</option>
+                <option>{t("page:home.subjectid")}</option>
+                <option>{t("page:home.subjectname")}</option>
             </select>
-            <input  type="text" className=""  placeholder="Search..."  />
-            {/* <input id="exampleEmail" type="text" name="search" placeholder="Search...."  className="form-control-sm"></input> */}
+            {/* <input  type="text" className=""  placeholder="Search..."  /> */}
+             <input type="text" name="search" placeholder={t("page:home.search")}  className="form-control-sm"></input>
             <button className="btn btn btn-secondary btn-sm">
-                Search
+               {t("page:search")}
             </button>
             </div>
         </div>

@@ -2,11 +2,43 @@
     "home":{
         "create":"　作 成　",
         "copy":"　コピー　",
-        "delete":"　削　除　"
+        "delete":"　削　除　",
+        "disable":"　無効化　",
+        "open":"　開く",
+        "filter":"　フィルタ",
+        "checkbox":"選択欄",
+        "subjectname":"案件名",
+        "subjectid":"案件ID",
+        "startdate":"開始日",
+        "enddate":"終了日",
+        "siminputStatus":"シミュレーション入力",
+        "compselstatus":"コンピテンシー選択",
+        "prinstatus":"印刷",
+        "csvoutputstatus":"　CSV出力",
+        "enabled":"活性状態",
+        "search":"内容を入力してください"
     },
-    "back":"戻る",
-    "next":"次へ",
-    "preservation":"保存",
+    "header":{
+        "home":"ホーム",
+        "info":"情報",
+        "edit":"情報修正",
+        "logout":"ログアウト"
+    },
+    "simul":{
+        "category":"種別",
+        "simulationid":"シミュレーションID"
+    },
+    "action" :{
+        "back":"戻る",
+        "next":"次へ",
+        "save":"保存",
+        "displayreference":"詳細説明表示",
+        "move":"移動",
+        "signout":"　サインアウト"
+    },
+    "businessdriver":"ビジネスドライバー",
+    "departmebtfit": "組織適合Fit",
+    "search":"　検 索　",
     "signin": "ログイン",
     "name":"コンピテンシー名",
     "definition":"定義",
@@ -17,7 +49,8 @@
     "nameC0001" :"顧客毎のプランニング",
     "definitionC0001":"全体包括的に見て利用可能なチャンス、顧客のビジネス優先度や予想されるビジネスの変化、地域的な問題、過去の売上成績、および利用可能なリソースを考慮しながら、顧客毎の営業目標を達成するための計画を立てる。計画で指定した行動を起こし、目標達成の進捗状況をチェックして、必要に応じて計画に修正を加える。",
     "keyActionC0001":"体系的な手法で顧客内の営業チャンスを評価して、優れた成果をもたらしうる可能性が最も高いものに的を絞る。顧客のビジネス優先度と予想されるビジネスの変化、意思決定プロセス、購入履歴をしっかりとした理解したうえで、営業チャンスに優先度を設定する。",
-    "test" :"lang testようこそ!!!!!!!!!!!!!!!!!!!!!!!"
+    "test" :"lang testようこそ!!!!!!!!!!!!!!!!!!!!!!!",
+    "text":"内容を入力してください"
     
   
   

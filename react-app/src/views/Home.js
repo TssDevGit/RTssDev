@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 import Tsearch from "../components/dashboard/Search";
 import { useTranslation } from 'react-i18next';
-import i18n from "i18next";
-
 const Home = () => {
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
@@ -13,41 +11,21 @@ const Home = () => {
   }
   const { t }  = useTranslation(['page'])
   
-  const onChangeLangen = () => {
-    i18n.changeLanguage('en')
-}
-  const onChangeLangja= () => {
-  i18n.changeLanguage('ja')
-}
   return (
     <div>
       <Form>        
-          <Tsearch/>
+        
           <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-          {/* <div class="mt-3 row">
-        <div class="col">
-          <div class="bg-light p-2 border"><Tsearch/> </div></div>
-          <div class="col">
-            <div class="bg-light p-2 border">
-            <Button className="btn-1" color="primary" onClick={routeChange}>{t(`page:home.create`)}</Button>
-            </div>
-          </div>
-          <div class="col">
-            <div class="bg-light p-2 border">
-            <Button className="btn-1" color="secondary" onClick={() => {  }}>{t(`page:home.copy`)}</Button>
-            </div>
-          </div>
-          <div class="col">
-            <div class="bg-light p-2 border">
-            <Button className="btn-1" color="danger" onClick={() => {  }}>{t(`page:home.delete`)}</Button>
-            </div>
-          </div>
-        </div> */}
-         <Button className="btn-1" color="primary" onClick={routeChange}>{t(`page:home.create`)}</Button>
-          <Button className="btn-1" color="secondary" onClick={() => {  }}>{t(`page:home.copy`)}</Button>
-          <Button className="btn-1" color="danger" onClick={() => {  }}>{t(`page:home.delete`)}</Button>
-          <Button className="btn-1" color="primary" onClick={onChangeLangen}>eng</Button>
-          <Button className="btn-1" color="primary" onClick={onChangeLangja}>ja</Button>          
+            <Row>
+            <Col md="5">
+              <Tsearch/>
+            </Col>
+            <Col md="7">
+              <Button className="btn-1" color="primary" onClick={routeChange}>{t(`page:home.create`)}</Button>
+              <Button className="btn-1" color="secondary" onClick={() => {  }}>{t(`page:home.copy`)}</Button>
+              <Button className="btn-1" color="danger" onClick={() => {  }}>{t(`page:home.delete`)}</Button>       
+            </Col>          
+            </Row> 
         </CardTitle>
       </Form>
 
@@ -56,21 +34,21 @@ const Home = () => {
         <Card>
           <CardTitle tag="h6" className="border-bottom p-3 mb-0">
             <i className="bi bi-card-text me-2"> </i>
-            案件一覧{t(`page:test`)}
+            案件一覧
           </CardTitle>
           <CardBody className="">
             <Table bordered striped className="tb-center">
               <thead className="homeichiran">
                 <tr>
                   <th className="chk"></th>
-                  <th className="anken">案件名</th>
-                  <th>開始日</th>
-                  <th>完了日</th>
-                  <th className="chline">シミュレーション 入力</th>
-                  <th className="chline">コンピテンシー選択</th>
-                  <th className="default">印刷</th>
-                  <th className="default">CSV出力</th>
-                  <th className="chline">活性状態 </th>
+                  <th className="anken">{t(`page:home.subjectname`)}</th>
+                  <th>{t(`page:home.startdate`)}</th>
+                  <th>{t(`page:home.enddate`)}</th>
+                  <th className="chline">{t(`page:home.siminputStatus`)}</th>
+                  <th className="chline">{t(`page:home.compselstatus`)}</th>
+                  <th className="default">{t(`page:home.prinstatus`)}</th>
+                  <th className="default">{t(`page:home.csvoutputstatus`)}</th>
+                  <th className="chline">{t(`page:home.enabled`)} </th>
                 </tr>
               </thead>
               <tbody>
