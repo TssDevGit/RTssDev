@@ -21,6 +21,8 @@ import us from"../assets/images/users/us.png";
 import i18n from "i18next";
 import { useTranslation } from 'react-i18next';
 
+import { useSelector,useDispatch } from "react-redux";
+
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -40,6 +42,8 @@ const Header = () => {
   i18n.changeLanguage('ja')
 }
   const {t} = useTranslation([`page`]);
+
+  const {count} = useSelector(state=>state.counter);
 
   return (
     <Navbar color="white" light expand="md" className="fix-header">
@@ -118,8 +122,9 @@ const Header = () => {
             <DropdownItem>{t("page:header.logout")}</DropdownItem>
           </DropdownMenu>
         </Dropdown>
+        {count}{localStorage.getItem("name")}
       </Collapse>
-    </Navbar>
+   </Navbar>
   );
 };
 

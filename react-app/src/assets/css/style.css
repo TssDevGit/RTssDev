@@ -66,6 +66,10 @@
 .Linearli {
     list-style:none;
 }
+.Linearlib{
+    padding: 2px;
+    margin-left: 5px;
+}
 .Linearlibi{
     font-weight: bold;
     padding: 5px;
@@ -82,18 +86,34 @@
 }
 .Linearlihtml{
     list-style:none;
+    border:solid;
+    border-color: #d6e0f5;
+    font-size: 12px;
+    margin:5px;
+}
+.Linearlihtml1{
+    list-style:none;
     border: solid;
     border-color: #d6e0f5;
     background-color: #d6e0f5;
     font-size: 11px;
-    margin-bottom: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+.konpitextbox{
+    list-style:none;
+    border:solid;
+    border-color: #d6e0f5;
+    margin-bottom: 20px;
 }
 .LinearliBD{
     list-style:none;
-    font-size: 14px;
+    font-size: 12px;
+    margin: auto;
 }
 .LinearliBD .BDTitle{
     font-weight: bold;
+    font-size: 13px;
 }
 .tb-center .BDketka1{
     background-color: #f5d7d4;
@@ -104,6 +124,7 @@
 .tb-center .BDketka3{
     background-color: #f3d7ac;
 }
+
 .homeichiran .anken{
     width: 25%;
     word-break: break-all;
@@ -117,4 +138,36 @@
 }
 .homeichiran .default{
     width: 5%;
+}
+.testlist {
+    margin-left: 25px;
+}
+.konpi3{
+    list-style:none;
+    list-style-position: inside;
+    font-size: 13px;
+    margin:0px; padding:0px;
+}
+.bhidden1{
+    border-bottom: hidden;
+    text-align: center;
+}
+.bhidden2{
+    border-left: hidden;
+}
+.bh2r {
+    text-align: right;
+}
+.checklistcall{
+    list-style:decimal;
+    border: solid;
+    height : 250px;
+    border-color: #d6e0f5;
+    background-color: #ffffff;
+    font-size: 14px;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+.konpititle3{
+    padding-bottom: 10px;
 }

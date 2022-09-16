@@ -11,7 +11,7 @@ export default function SearchComponent() {
             </select>
             {/* <input  type="text" className=""  placeholder="Search..."  /> */}
              <input type="text" name="search" placeholder={t("page:home.search")}  className="form-control-sm"></input>
-            <button className="btn btn btn-secondary btn-sm">
+            <button className="btn btn btn-primary btn-sm">
                {t("page:search")}
             </button>
             </div>

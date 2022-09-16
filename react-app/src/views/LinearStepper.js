@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
+import Axios from "axios";
 import {
   Typography,
   TextField,
@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
-
+import $ from "jquery";
 import {
   Card,
   Row,
@@ -62,7 +62,40 @@ function getSteps() {
 }
 
 function getStepContent(step, setOpenPopup,setOpenPopupFit) {
-  const { t }  = useTranslation(['page'])
+  const { t }  = useTranslation(['page']);
+  const url="https://rtsssubject.azurewebsites.net/api/HttpTrigger2";
+ 
+  const [data,setData] = useState({
+    subjectID:"",
+    subjectname:"",
+    startdate:"",
+    enddate:"",
+    subjectgroup:"",
+    name:""
+  })
+
+  function submit(e){
+    e.preventDefault();
+    Axios.post(url,{
+      subjectID: data.subjectID,
+      subjectname: data.subjectname,
+      startdate: data.startdate,
+      enddate: data.enddate,
+      subjectgroup: data.subjectgroup,
+      name: data.name
+    })
+      .then(res =>{
+          console.log("tjdrhd??")
+          console.log(res.data)
+      })
+  }
+
+  function handle(e){
+    const newdata={...data}
+    newdata[e.target.id] =e.target.value
+    setData(newdata)
+    console.log(newdata)
+  }
   const  options  = [
     { label:  'Option 1', value:  'option_1'  },
     { label:  'Option 2', value:  'option_2'  },
@@ -70,9 +103,14 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
     { label:  'Option 4', value:  'option_4'  },
   ]
 
-  const  handleOnchange  =  val  => {
- 
-  }
+  const [val,setVal] = React.useState([]);
+  const  handleChange  = e => {
+    if (val.includes(e.target.value)) {
+      setVal(val.filter(item => item !== e.target.value));
+    } else {
+      setVal([...val, e.target.value]);
+     }
+  };
 
   switch (step) {
     case 0:
@@ -88,12 +126,13 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                 案件情報
               </CardTitle>
               <CardBody>
-                <Form>
+                <Form onSubmit={(e)=>submit}>
                   <FormGroup>
                     <Label for="exampleEmail">{t("page:home.subjectid")}</Label>
                     <Input
-                      id="nm1"
-                      name="name"
+                      onChange={(e)=>handle(e)} value={data.subjectID}
+                      id="subjectID" 
+                      name="subjectID"
                       placeholder={t("page:text")}
                       type="text"
                     />
@@ -101,8 +140,9 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                   <FormGroup>
                     <Label for="exampleEmail">{t("page:home.subjectname")}</Label>
                     <Input
-                      id="nm2"
-                      name="name"
+                     onChange={(e)=>handle(e)} value={data.subjectname}
+                      id="subjectname"
+                      name="subjectname"
                       placeholder="必須"
                       type="text"
                     />
@@ -110,8 +150,9 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                   <FormGroup>
                     <Label for="examplePassword">{t("page:home.startdate")}</Label>
                     <Input
-                      id="date1"
-                      name="password"
+                      onChange={(e)=>handle(e)} value={data.startdate}
+                      id="startdate"
+                      name="startdate"
                       placeholder="必須"
                       type="date"
                     />
@@ -119,25 +160,29 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                   <FormGroup>
                     <Label for="examplePassword">{t("page:home.enddate")}</Label>
                     <Input
-                      id="date2"
-                      name="date2"
+                      onChange={(e)=>handle(e)} value={data.enddate}
+                      id="enddate"
+                      name="enddate"
                       placeholder="必須"
                       type="date"
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label for="exampleSelect">案件グループ</Label>
-                    <Input id="exampleSelect" name="select" type="select">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                    <Input id="subjectgroup" name="subjectgroup" type="select" >
+                      <option value={data.subjectgroup}>1</option>
+                      <option value={data.subjectgroup}>2</option>
+                      <option value={data.subjectgroup}>3</option>
+                      <option value={data.subjectgroup}>4</option>
+                      <option value={data.subjectgroup}>5</option>
                     </Input>
                   </FormGroup>
                   <FormGroup>
                     <Label for="exampleText">説明</Label>
-                    <Input id="exampleText" name="text" type="textarea" />
+                    <Input id="name" name="name" type="textarea" onChange={(e)=>handle(e)} value={data.text} />
+                  </FormGroup>
+                  <FormGroup>
+                    <Button onClick={submit}>submit</Button>
                   </FormGroup>
                 </Form>
               </CardBody>
@@ -159,19 +204,29 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                 {/* border-bottom p-3 mb-0 */}
                   <CardTitle tag="h6" className="border-bottom p-3 mb-0">
                   {t("businessdriver")}
-                    <Button className="btn-1" color="primary" onClick={() => { setOpenPopup(true); }}>クリック</Button>
+                    <Button className="btn-1 btn-sm" color="primary" onClick={() => { setOpenPopup(true); }}>クリック</Button>
+                      <List className="Linearlihtml1">
+                        <li>(説明と指示文：未作成)</li>
+                        <li>コンピテンシーを選択してください。選択されたビジネスドライバーに関連性が高いものから順に表示しています。</li>
+                        <li>コンピテンシーとは、ｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘ。</li>
+                      </List>
                   </CardTitle>
                 </Form>
-                  <div id="test"></div>                      
+                  <div id="test" className="testlist"></div>                      
                   </CardBody>
               <CardBody>
                 <Form>
                   <CardTitle tag="h6" className="border-bottom p-3 mb-0">
                     Fit
-                    <Button className="btn-1" color="primary" onClick={() => { setOpenPopupFit(true); }}>クリック</Button>
+                    <Button className="btn-1 btn-sm" color="primary" onClick={() => { setOpenPopupFit(true); }}>クリック</Button>
+                      <List className="Linearlihtml1">
+                        <li>(説明と指示文：未作成)</li>
+                        <li>組織適合の要素を最大３つまで選択してください。色分けされた３つのカテゴリから一つバランス良く選択することを推奨します。</li>
+                        <li>組織適合とは、ｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘ。</li>
+                      </List>
                   </CardTitle>
                 </Form>
-                  <div id="test2"></div>
+                  <div id="test2" className="testlist"></div>
               </CardBody>
             </Card>     
           </Col>
@@ -181,169 +236,165 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
       return (
         <div>
           {/***Table ***/}
-          <Col lg="12">
-            <Card>
-              <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-                <i className="bi bi-card-text me-2"> </i>
-                コンピテンシー選択
-              </CardTitle>
-              <CardBody className="">              
-                  <List className="Linearlihtml">
-                    <li>(説明と指示文：未作成)</li>
-                    <li>コンピテンシーを選択してください。選択されたビジネスドライバーに関連性が高いものから順に表示しています。</li>
-                    <li>コンピテンシーとは、ｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘｘ。</li>
+          <Row>
+            <Col lg="12">
+              <Card>
+                <CardTitle tag="h6" className="border-bottom p-3 mb-0">
+                  <i className="bi bi-card-text me-2"> </i>
+                  コンピテンシー選択
+                </CardTitle>
+                <CardBody className="">
+                  <Row className="konpitextbox">  
+                      <Col md='6' >                           
+                        <List className="LinearliBD">
+                          <li className="BDTitle">選択したビジネスドライバー</li>
+                          <li className="Linearlib">成果重視型の文化の構築</li>
+                          <li className="Linearlib">顧客重視の風土形成</li>
+                          <li className="Linearlib">戦略的なビジネス提携（アライアンス）の構築（社外／組織外）</li>
+                        </List>
+                      </Col>
+                      <Col md='6'>                           
+                        <List className="LinearliBD">
+                          <li className="BDTitle">職務</li>
+                          <li className="Linearlib">セールス・ディレクター</li>                      
+                        </List>
+                        <Row>
+                          <Col sm>
+                            <List className="LinearliBD">
+                              <li className="BDTitle">職務ステージ</li>
+                              <li className="Linearlib">Lv5</li>
+                            </List>
+                          </Col>
+                        </Row>
+                      </Col>
+                </Row>              
+              <h5 className="konpititle3">コンピテンシー選択欄</h5>
+              <Row>
+                <Col md='8'>
+                  <Table className="table table-bordered tablechk" >
+                    <tbody>
+                      <tr>
+                        <td className="bhidden1">高</td>
+                        <td>
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="業務運営上の意思決定" onChange={handleChange} checked={val.includes('業務運営上の意思決定')} />
+                                業務運営上の意思決定
+                             </label>
+                            </li>
+                          </ul>                         
+                        </td>
+                        <td>
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="財務感覚" onChange={handleChange} checked={val.includes('財務感覚')} />
+                                財務感覚
+                             </label>
+                            </li>
+                          </ul>                         
+                        </td>
+                        <td>
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="戦略的方向性の設定" onChange={handleChange} checked={val.includes('戦略的方向性の設定')} />
+                                戦略的方向性の設定
+                              </label>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="bhidden1" >BDスコア</td>
+                        <td>
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="起業家感覚" onChange={handleChange} checked={val.includes('起業家感覚')} />
+                                起業家感覚
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="変革リーダーシップ" onChange={handleChange} checked={val.includes('変革リーダーシップ')} />
+                                変革リーダーシップ
+                             </label>
+                            </li>
+                          </ul>
+                        </td>
+                        <td >
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="ビジネス手腕" onChange={handleChange} checked={val.includes('ビジネス手腕')} />
+                                ビジネス手腕
+                             </label>
+                            </li>
+                          </ul>
+                        </td>  
+                        <td></td>                      
+                      </tr>
+                      <tr>
+                        <td className="bhidden1">低</td>
+                        <td>
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                              <input type={"checkbox"} value="組織の鼓舞・活性化" onChange={handleChange} checked={val.includes('組織の鼓舞・活性化')} />
+                              組織の鼓舞・活性化
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="意思決定" onChange={handleChange} checked={val.includes('意思決定')} />
+                                意思決定
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type={"checkbox"} value="ロジカル・コミュニケーション" onChange={handleChange} checked={val.includes('ロジカル・コミュニケーション')} />
+                                ロジカル・コミュニケーション
+                              </label>
+                            </li>
+                          </ul>                       
+                        </td>   
+                        <td></td>
+                        <td>
+                          <ul className="konpi3">
+                            <li>
+                              <label>
+                              <input type={"checkbox"} value="説得力のあるコミュニケーション" onChange={handleChange} checked={val.includes('説得力のあるコミュニケーション')} />
+                              説得力のあるコミュニケーション
+                              </label>
+                            </li>
+                          </ul>                        
+                        </td>
+                      </tr>     
+                      <tr>
+                        <td ></td>
+                        <td className="bhidden2">低</td>
+                        <td className="bhidden2">JOBスコア</td>
+                        <td className="bhidden2 bh2r">高</td>
+                      </tr>          
+                    </tbody>
+                  </Table>
+                </Col>
+                <Col className="checkcol">
+                  <List className="checklistcall">
+                    {/* checklist呼ぶ */}
+                    {val.map((c)=>(
+                      <li>{c}</li>
+                    ))}
+                      
                   </List>
-                  <List className="LinearliBD">
-                      <li className="BDTitle">選択済ビジネスドライバー（BD）</li>
-                      <li>BD1：成果重視型の文化の構築</li>
-                      <li>BD2：顧客重視の風土形成</li>
-                      <li>BD3：戦略的なビジネス提携（アライアンス）の構築（社外／組織外）</li>
-                      <li>BD4：</li>
-                      <li>BD5：</li>
-                      <li>BD6：</li>
-                    </List>
-                <Table bordered striped className="tb-center">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>順位</th>
-                      <th>コンピテンシー名</th>
-                      <th  className="BDketka1">BD1</th>
-                      <th  className="BDketka2">BD2</th>
-                      <th  className="BDketka3">BD3</th>
-                      <th  className="BDketka4">BD4</th>
-                      <th  className="BDketka5">BD5</th>
-                      <th  className="BDketka6">BD6</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>1</td>
-                      <td>パートナーシップ形成</td>
-                      <td>O</td>
-                      <td>O</td>
-                      <td>O</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>2</td>
-                      <td>他者の目標設定変更</td>
-                      <td>O</td>
-                      <td></td>
-                      <td>O</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>3</td>
-                      <td>変革推進</td>
-                      <td></td>
-                      <td>O</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>4</td>
-                      <td>チーム構築</td>
-                      <td>O</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>   
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>5</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>     
-                    <tr>
-                      <th scope="row"><input type="checkbox" id="topping" name="topping" value="Paneer" /></th>
-                      <td>6</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>                      
-                  </tbody>
-                </Table>
-                <List className="LinearliBD">
-                      <li className="BDTitle">選択済ビジネスドライバー（Fit）</li>
-                      <li>BD1：</li>
-                      <li>BD2：</li>
-                      <li>BD3：</li>
-                      <li>BD4：</li>
-                      <li>BD5：</li>
-                      <li>BD6：</li>
-                </List>  
-                <Table bordered striped className="tb-center">
-                  <thead>
-                    <tr>                     
-                      <th>順位</th>
-                      <th>{t("page:name")}</th>
-                      <th>BD1</th>
-                      <th>BD2</th>
-                      <th>BD3</th>
-                      <th>BD4</th>
-                      <th>BD5</th>
-                      <th>BD6</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>パートナーシップ形成</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>               
-                  </tbody>
-                </Table>
+                </Col>                
+              </Row>
               </CardBody>
             </Card>
           </Col>
-          
+        </Row>  
         </div>
       );
     case 3:
