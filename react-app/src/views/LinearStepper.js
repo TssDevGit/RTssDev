@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
-import $ from "jquery";
 import {
   Card,
   Row,
@@ -104,14 +103,28 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
   ]
 
   const [val,setVal] = React.useState([]);
+  
   const  handleChange  = e => {
     if (val.includes(e.target.value)) {
       setVal(val.filter(item => item !== e.target.value));
     } else {
       setVal([...val, e.target.value]);
      }
+     chkcol();
   };
-
+  function chkcol(){
+   var chksub= document.getElementsByClassName(`chk`);
+   for(let i=0;i<chksub.length;i++){
+    if(chksub[i].checked == true){
+      document.getElementsByName("subc")[i].className="change";
+      console.log("??",i,chksub[i].checked,chksub[i].value)
+    }else{
+      document.getElementsByName("subc")[i].className="unchange";
+      console.log("??",i,chksub[i].checked,chksub[i].value)
+    }
+    
+   }
+  }
   switch (step) {
     case 0:
       return (
@@ -148,26 +161,6 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="examplePassword">{t("page:home.startdate")}</Label>
-                    <Input
-                      onChange={(e)=>handle(e)} value={data.startdate}
-                      id="startdate"
-                      name="startdate"
-                      placeholder="必須"
-                      type="date"
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="examplePassword">{t("page:home.enddate")}</Label>
-                    <Input
-                      onChange={(e)=>handle(e)} value={data.enddate}
-                      id="enddate"
-                      name="enddate"
-                      placeholder="必須"
-                      type="date"
-                    />
-                  </FormGroup>
-                  <FormGroup>
                     <Label for="exampleSelect">案件グループ</Label>
                     <Input id="subjectgroup" name="subjectgroup" type="select" >
                       <option value={data.subjectgroup}>1</option>
@@ -182,7 +175,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                     <Input id="name" name="name" type="textarea" onChange={(e)=>handle(e)} value={data.text} />
                   </FormGroup>
                   <FormGroup>
-                    <Button onClick={submit}>submit</Button>
+                    <Button onClick={submit}>submit(任意)</Button>
                   </FormGroup>
                 </Form>
               </CardBody>
@@ -238,7 +231,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
           {/***Table ***/}
           <Row>
             <Col lg="12">
-              <Card>
+              <Card id="mycard">
                 <CardTitle tag="h6" className="border-bottom p-3 mb-0">
                   <i className="bi bi-card-text me-2"> </i>
                   コンピテンシー選択
@@ -270,7 +263,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                 </Row>              
               <h5 className="konpititle3">コンピテンシー選択欄</h5>
               <Row>
-                <Col md='8'>
+                <Col md='10'>
                   <Table className="table table-bordered tablechk" >
                     <tbody>
                       <tr>
@@ -278,8 +271,8 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                         <td>
                           <ul className="konpi3">
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="業務運営上の意思決定" onChange={handleChange} checked={val.includes('業務運営上の意思決定')} />
+                              <label name="subc" className="unchange" >
+                                <input type={"checkbox"} className="chk chkmargin" value="業務運営上の意思決定" onChange={handleChange} checked={val.includes('業務運営上の意思決定')} />
                                 業務運営上の意思決定
                              </label>
                             </li>
@@ -288,8 +281,8 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                         <td>
                           <ul className="konpi3">
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="財務感覚" onChange={handleChange} checked={val.includes('財務感覚')} />
+                              <label name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="財務感覚" onChange={handleChange} checked={val.includes('財務感覚')} />
                                 財務感覚
                              </label>
                             </li>
@@ -298,8 +291,8 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                         <td>
                           <ul className="konpi3">
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="戦略的方向性の設定" onChange={handleChange} checked={val.includes('戦略的方向性の設定')} />
+                              <label name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="戦略的方向性の設定" onChange={handleChange} checked={val.includes('戦略的方向性の設定')} />
                                 戦略的方向性の設定
                               </label>
                             </li>
@@ -311,14 +304,14 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                         <td>
                           <ul className="konpi3">
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="起業家感覚" onChange={handleChange} checked={val.includes('起業家感覚')} />
+                              <label  name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="起業家感覚" onChange={handleChange} checked={val.includes('起業家感覚')} />
                                 起業家感覚
                               </label>
                             </li>
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="変革リーダーシップ" onChange={handleChange} checked={val.includes('変革リーダーシップ')} />
+                              <label  name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="変革リーダーシップ" onChange={handleChange} checked={val.includes('変革リーダーシップ')} />
                                 変革リーダーシップ
                              </label>
                             </li>
@@ -326,9 +319,9 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                         </td>
                         <td >
                           <ul className="konpi3">
-                            <li>
-                              <label>
-                                <input type={"checkbox"} value="ビジネス手腕" onChange={handleChange} checked={val.includes('ビジネス手腕')} />
+                            <li> 
+                              <label name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="ビジネス手腕" onChange={handleChange} checked={val.includes('ビジネス手腕')} />
                                 ビジネス手腕
                              </label>
                             </li>
@@ -341,31 +334,31 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                         <td>
                           <ul className="konpi3">
                             <li>
-                              <label>
-                              <input type={"checkbox"} value="組織の鼓舞・活性化" onChange={handleChange} checked={val.includes('組織の鼓舞・活性化')} />
+                              <label name="subc" className="unchange">
+                              <input type={"checkbox"} className="chk chkmargin" value="組織の鼓舞・活性化" onChange={handleChange} checked={val.includes('組織の鼓舞・活性化')} />
                               組織の鼓舞・活性化
                               </label>
                             </li>
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="意思決定" onChange={handleChange} checked={val.includes('意思決定')} />
+                              <label name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="意思決定" onChange={handleChange} checked={val.includes('意思決定')} />
                                 意思決定
                               </label>
                             </li>
                             <li>
-                              <label>
-                                <input type={"checkbox"} value="ロジカル・コミュニケーション" onChange={handleChange} checked={val.includes('ロジカル・コミュニケーション')} />
+                              <label name="subc" className="unchange">
+                                <input type={"checkbox"} className="chk chkmargin" value="ロジカル・コミュニケーション" onChange={handleChange} checked={val.includes('ロジカル・コミュニケーション')} />
                                 ロジカル・コミュニケーション
                               </label>
                             </li>
-                          </ul>                       
+                          </ul>                      
                         </td>   
                         <td></td>
                         <td>
                           <ul className="konpi3">
                             <li>
-                              <label>
-                              <input type={"checkbox"} value="説得力のあるコミュニケーション" onChange={handleChange} checked={val.includes('説得力のあるコミュニケーション')} />
+                              <label name="subc" className="unchange">
+                              <input type={"checkbox"} className="chk chkmargin" value="説得力のあるコミュニケーション" onChange={handleChange} checked={val.includes('説得力のあるコミュニケーション')} />
                               説得力のあるコミュニケーション
                               </label>
                             </li>
@@ -382,10 +375,10 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                   </Table>
                 </Col>
                 <Col className="checkcol">
-                  <List className="checklistcall">
+                  <List className="checklistcall"> {/*checklistcall */}
                     {/* checklist呼ぶ */}
                     {val.map((c)=>(
-                      <li>{c}</li>
+                      <li className="change">{c}</li>
                     ))}
                       
                   </List>

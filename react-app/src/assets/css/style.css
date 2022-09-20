@@ -150,24 +150,47 @@
 }
 .bhidden1{
     border-bottom: hidden;
-    text-align: center;
+    display: table-cell; 
+    vertical-align: middle;
+    align-items: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 13px;
+    height: 120px;
 }
 .bhidden2{
     border-left: hidden;
+    font-size: 13px;
 }
 .bh2r {
     text-align: right;
 }
 .checklistcall{
     list-style:decimal;
-    border: solid;
+    /* border: solid; */
     height : 250px;
-    border-color: #d6e0f5;
+    /* border-color: #d6e0f5; */
     background-color: #ffffff;
-    font-size: 14px;
-    padding-left: 40px;
+    font-size: 11px;
+    padding-left: 20px;
     padding-top: 20px;
 }
 .konpititle3{
     padding-bottom: 10px;
 }
+.change{
+    color: #ff9900;
+    font-weight: bold;
+    accent-color: #ff9900;
+}
+.unchange{
+    color: black;
+}
+.tablechk li{
+    padding: 5px;
+}
+.chkmargin{
+    margin-right: 10px;
+}
+
+

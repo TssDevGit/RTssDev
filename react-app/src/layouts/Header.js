@@ -20,8 +20,13 @@ import japanese from"../assets/images/users/japan.png";
 import us from"../assets/images/users/us.png";
 import i18n from "i18next";
 import { useTranslation } from 'react-i18next';
+import { useSelector,useDispatch } from "react-redux"; //redux 
+import b2c from "../B2C";
 
-import { useSelector,useDispatch } from "react-redux";
+  const redirectLogout =()=>{
+    b2c.signOut();
+  };
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -119,10 +124,11 @@ const Header = () => {
             <DropdownItem divider />
             <DropdownItem>My Balance</DropdownItem>
             <DropdownItem>Inbox</DropdownItem>
-            <DropdownItem>{t("page:header.logout")}</DropdownItem>
+            <DropdownItem onClick={redirectLogout}>{t("page:header.logout")}</DropdownItem>
           </DropdownMenu>
         </Dropdown>
-        {count}{localStorage.getItem("name")}
+        {/* {count} */}
+        {localStorage.getItem("name")}
       </Collapse>
    </Navbar>
   );
