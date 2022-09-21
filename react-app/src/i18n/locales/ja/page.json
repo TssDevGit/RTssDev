@@ -1,13 +1,18 @@
 {
     "home":{
-        "create":"　作 成　",
+        "create":"　新規作成　",
         "copy":"　コピー　",
         "delete":"　削　除　",
         "disable":"　無効化　",
         "open":"　開く",
         "filter":"　フィルタ",
         "checkbox":"選択欄",
-        "subjectname":"案件名",
+        "subjectname":"名称",
+        "updateuser":"更新者",
+        "updatedate":"更新日",
+        "status":"ステータス",
+        "selectcondition":"条件",
+        "jobstage":"職務ステージ",
         "subjectid":"案件ID",
         "startdate":"開始日",
         "enddate":"終了日",
@@ -15,7 +20,7 @@
         "compselstatus":"コンピテンシー選択",
         "prinstatus":"印刷",
         "csvoutputstatus":"　CSV出力",
-        "enabled":"活性状態",
+        "enabled":"無効化/有効化",
         "search":"内容を入力してください"
     },
     "header":{

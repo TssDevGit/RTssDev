@@ -125,6 +125,7 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
     
    }
   }
+
   switch (step) {
     case 0:
       return (
@@ -173,6 +174,10 @@ function getStepContent(step, setOpenPopup,setOpenPopupFit) {
                   <FormGroup>
                     <Label for="exampleText">説明</Label>
                     <Input id="name" name="name" type="textarea" onChange={(e)=>handle(e)} value={data.text} />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleText">添付</Label>
+                    <Input id="name" name="upload" type="file"  />
                   </FormGroup>
                   <FormGroup>
                     <Button onClick={submit}>submit(任意)</Button>
